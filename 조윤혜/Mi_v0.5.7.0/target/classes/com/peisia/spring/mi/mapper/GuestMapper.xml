@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peisia.spring.mi.mapper.GuestMapper">
+	<select id="getCount" resultType="int">
+		SELECT count(*) from tbl_guest
+	</select>
+	
+	<select id="getList" resultType="com.peisia.spring.mi.vo.GuestVO">
+		SELECT * from tbl_guest limit #{limitIndex} , 5
+	</select>
+	
+	<select id="read" resultType="com.peisia.spring.mi.vo.GuestVO">
+		select * from tbl_guest where bno = #{bno}
+	</select>
+		
+	
+	<delete id="del">
+		delete from tbl_guest where bno = #{bno}
+	</delete>
+		
+	<insert id="write">
+		insert into tbl_guest (btext) values (#{btext})
+	</insert>		
+	
+	<update id="modify">
+		update tbl_guest
+		set btext = #{btext}
+		where bno = #{bno}
+	</update>
+</mapper>
